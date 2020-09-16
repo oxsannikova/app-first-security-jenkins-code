@@ -61,7 +61,7 @@ pipeline {
           }
         }
         steps {
-          container('jnlp') {
+          container('kubectl') {
             sh """cat <<EOF | kubectl apply --validate=false -f -
 apiVersion: v1
 kind: Namespace
