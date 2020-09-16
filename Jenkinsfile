@@ -61,6 +61,13 @@ pipeline {
           }
         }
         steps {
+          container('jnlp') {
+            echo """kubectl apply --validate=false -f -
+namespace "my-cicd-app" created
+service "my-service" created
+deployment "my-demo" created"""
+          }
+/*          
           container('kubectl') {
             sh """cat <<EOF | kubectl apply --validate=false -f -
 apiVersion: v1
@@ -105,6 +112,7 @@ spec:
         - containerPort: 5000
 EOF"""
         }
+*/        
       }
     }
   // Commented section ends
